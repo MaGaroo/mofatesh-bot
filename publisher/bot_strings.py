@@ -21,7 +21,3 @@ INVALID_COURSE = "Invalid course number...\n" \
 NOT_A_SUBSCRIBE = "This chat is not listening to this course."
 
 ALREADY_A_SUBSCRIBER = "This chat is already subscribed to this course."
-
-TEST_MSG = """
-\n\n\n\n\n\n\t\t\t\t\t\t\t\xa0\xa0Assignment #3\n\n\n\n\t\t\t\t\t\t\tDeadline: 1400/2/16\t\t\t\t\t\t\t\xa0\n\t\t\t\t\t\t\t\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \xa0 »\xa0Assignment File:\n\n\n\n\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tHW3.pdf\t\t\t\t\t\t\t\t\t\t\t\t\t\n\n\n\n\n\n\n\n\n \xa0 »\xa0Comments: \n\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\tHear you're friends! Z-transform is one of the tastiest cuisines across the realm of Signal and Systems!\t\t\t\t\t\t\t\t\t\n\n\n\n\n\n\n\n\n\n\n\n\n\n
-"""
