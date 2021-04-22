@@ -1,4 +1,6 @@
 data
+local_config.py
+.idea
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,vim,pycharm
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,vim,pycharm
