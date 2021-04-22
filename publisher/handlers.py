@@ -1,8 +1,12 @@
+from telegram import ParseMode
+
 from db.subscriber import Subscriber
 from publisher import bot_strings, utils
 
 
 def start_command_handler(update, _):
+    update.message.reply_text(bot_strings.TEST_MSG, parse_mode=ParseMode.HTML)
+    return
     update.message.reply_text(bot_strings.WELCOME_MESSAGE)
 
 

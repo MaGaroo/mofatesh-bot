@@ -1,11 +1,12 @@
 import time
 
+import telegram.error
 from telegram import Bot, ParseMode
 from telegram.ext import Updater, CommandHandler
-import telegram.error
 
+import config
 from db.subscriber import Subscriber
-from publisher import handlers, utils
+from publisher import handlers
 
 
 class BotRunner:
@@ -30,11 +31,15 @@ class BotRunner:
                 for course, updates in updates.items():
                     for idx, msg in updates:
                         try:
-                            bot.send_message(subscriber.chat_id, utils.escape_message(msg), parse_mode=ParseMode.MARKDOWN_V2)
+                            bot.send_message(
+                                subscriber.chat_id,
+                                msg,
+                                parse_mode=ParseMode.HTML,
+                            )
                             subscriber.sent_update(course, idx)
                         except telegram.error.TimedOut as e:
                             print('Ah timeout...')
                         except Exception as e:
                             e.print_exc()
 
-            time.sleep(10)
+            time.sleep(config.BOT_SLEEP_TIME)

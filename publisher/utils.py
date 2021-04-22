@@ -1,4 +1,4 @@
-ESCAPE_CHARS = '|-.(!)#_=*'
+MARKDOWN_ESCAPE_CHARS = '|-.(!)#_=*'
 
 
 def is_valid_course_code(code):
@@ -6,6 +6,6 @@ def is_valid_course_code(code):
 
 
 def escape_message(msg):
-    for char in ESCAPE_CHARS:
+    for char in MARKDOWN_ESCAPE_CHARS:
         msg = msg.replace(char, f'\\{char}')
     return msg

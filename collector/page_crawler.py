@@ -1,5 +1,10 @@
+import urllib.parse
+
 import requests
 from bs4 import BeautifulSoup
+
+from collector import utils
+from collector.utils import dirty_url_join
 
 
 class PageCrawler:
@@ -38,7 +43,9 @@ class HomePageCrawler(PageCrawler):
 
 class AssignmentsPageCrawler(PageCrawler):
     def get_messages(self):
-        html = requests.get(self.url).text
+        resp = requests.get(self.url)
+        self.url = resp.url
+        html = resp.text
         soup = BeautifulSoup(html, 'html.parser')
         head = soup.find('table', attrs={'class': 'headtable'})
         body = list(head.next_siblings)[3].find('tr')
@@ -59,10 +66,10 @@ class AssignmentsPageCrawler(PageCrawler):
             text = row.find('table').find('td').text.strip()
 
             link_elems = row.findAll('a')
-            links = ''
+            links = {}
             for elem in link_elems:
-                href = elem['href']
-                links += f'[{elem.text.strip()}]({href})\n'
+                href = dirty_url_join(self.url, elem['href'])
+                links[elem.text.strip()] = href
 
             sections.append([part_name, text, links])
 
@@ -70,13 +77,11 @@ class AssignmentsPageCrawler(PageCrawler):
 
     def render_message(self, title, deadline, sections):
         sections_text = '\n'.join([
-            f'{s[0]}\n'
-            f'{s[1]}\n' \
-            + (f'(Go to the course page to view the links)\n' if s[2] else '')
+            utils.section_text(s)
             for s in sections
         ])
 
         return f'New assignment\n' \
-               f'{title} | {deadline}\n' \
+               f'<b>{title} | {deadline}</b>\n' \
                f'\n' \
                f'{sections_text}\n'
