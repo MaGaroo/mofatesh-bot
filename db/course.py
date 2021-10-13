@@ -61,8 +61,12 @@ class Course:
 
     @property
     def data_dir(self):
-        return os.path.join(config.COURSES_DIR, self.code)
+        address = os.path.join(config.COURSES_DIR, self.code)
+        os.makedirs(address, exist_ok=True)
+        return address
 
     @property
     def messages_dir(self):
-        return os.path.join(self.data_dir, 'messages')
+        address = os.path.join(self.data_dir, 'messages')
+        os.makedirs(address, exist_ok=True)
+        return address

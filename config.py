@@ -11,7 +11,6 @@ COLLECTOR_SLEEP_TIME = 60
 
 ALLOWED_COURSES = [
     '00-01_1_ce242-1',
-    '00-01_1_ce242-2',
 ]
 
 try:
