@@ -1,8 +1,10 @@
+from config import ALLOWED_COURSES
+
 MARKDOWN_ESCAPE_CHARS = '|-.(!)#_=*'
 
 
 def is_valid_course_code(code):
-    return code == '99-00_2_ce242-1'
+    return code in ALLOWED_COURSES
 
 
 def escape_message(msg):
