@@ -15,6 +15,7 @@ pip install -r requirements.txt
 ```
 
 and then create a file named `local_config.py` containing:
+
 ```python
 # Required
 BOT_TOKEN = 'YOUR_BOT_TOKEN'
@@ -30,8 +31,21 @@ COLLECTOR_SLEEP_TIME = 60 # check courseware time interval
 
 The course ID can be extracted from the URL of course homepage. Just replace each `/` with a `_`.
 
+### Run
+There are 2 services you should run. A collector service and a publisher service.
+
+Just run each of the following commands in a different terminal session.
+
+```bash
+python collector
+python publisher
+```
+
 ### Usage
-Just add the Telegram bot to the group of course or directly message it. There are some commands:
+Just add the Telegram bot to the group of course or directly message it.
+
+There are 4 commands:
+
 ```
 /start
 /listen <course ID>
