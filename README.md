@@ -52,3 +52,4 @@ There are 4 commands:
 /deafen <course ID>
 /help
 ```
+smmh was here!
