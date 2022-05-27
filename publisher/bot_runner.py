@@ -40,6 +40,9 @@ class BotRunner:
                         except telegram.error.TimedOut as e:
                             print('Ah timeout...')
                         except Exception as e:
-                            e.print_exc()
+                            try:
+                                e.print_exc()
+                            except:
+                                print('Dont know whats happening', e, subscriber)
 
             time.sleep(config.BOT_SLEEP_TIME)
